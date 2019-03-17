@@ -4,25 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.nxs</groupId>
-	<artifactId>spring-boot</artifactId>
+	<artifactId>docker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>quick-start</module>
-        <module>jdbc-template</module>
-        <module>mongodb</module>
-        <module>redis</module>
-        <module>restful-api</module>
-        <module>spring-data-jpa</module>
-        <module>swagger2</module>
-        <module>thymeleaf</module>
-        <module>docker</module>
-        <module>kafka</module>
-        <module>security-cas</module>
-    </modules>
-    <packaging>pom</packaging>
+	<packaging>jar</packaging>
 
-	<name>spring-boot</name>
-	<description>spring-boot</description>
+	<name>docker</name>
+	<description>docker</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -34,13 +21,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<docker.image.prefix>springio</docker.image.prefix>
 		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -55,6 +43,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.11</version>
+				<configuration>
+					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<dockerDirectory>src/main/docker</dockerDirectory>
+					<dockerHost>http://192.168.0.198:5555</dockerHost>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
