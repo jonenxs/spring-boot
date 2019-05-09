@@ -7,17 +7,32 @@
 	<artifactId>spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>quick-start</module>
-        <module>jdbc-template</module>
-        <module>mongodb</module>
-        <module>redis</module>
-        <module>restful-api</module>
-        <module>spring-data-jpa</module>
-        <module>swagger2</module>
-        <module>thymeleaf</module>
-        <module>docker</module>
-        <module>kafka</module>
-        <module>security-cas</module>
+        <module>aop</module>
+        <module>actuator</module>
+        <module>async</module>
+		<module>docker</module>
+		<module>ehcache</module>
+		<module>exception</module>
+		<module>jdbc-template</module>
+		<module>log4j</module>
+		<module>loggers</module>
+		<module>mail</module>
+		<module>mongodb</module>
+		<module>mybatis</module>
+		<module>properties</module>
+		<module>quick-start</module>
+		<module>rabbitmq-hello</module>
+		<module>redis</module>
+		<module>redis-cache</module>
+		<module>scheduled</module>
+		<module>security-cas</module>
+		<module>spring-data-jpa</module>
+		<module>spring-security</module>
+		<module>state-machine</module>
+		<module>restful-api</module>
+		<module>swagger2</module>
+		<module>thymeleaf</module>
+		<module>kafka</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -41,6 +56,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 
 		<dependency>

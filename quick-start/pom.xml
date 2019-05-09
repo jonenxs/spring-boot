@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>quick-start</artifactId>
+    <artifactId>rabbitmq-hello</artifactId>
 
     <dependencies>
         <dependency>
